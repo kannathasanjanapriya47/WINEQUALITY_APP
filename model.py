@@ -9,7 +9,7 @@ import joblib
 # Load dataset
 df = pd.read_csv("data/winequality-red.csv")
 
-# Convert quality score into binary classification: Good (1) or Bad (0)
+# Convert quality score Good (1) or Bad (0
 df['quality_label'] = df['quality'].apply(lambda x: 1 if x >= 7 else 0)
 
 # Features (X) and target (y)
@@ -19,7 +19,7 @@ y = df['quality_label']
 # Split into train and test sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Models to compare
+# Models  that we can compare
 models = {
     'logreg': LogisticRegression(max_iter=1000),
     'rf': RandomForestClassifier(n_estimators=100, random_state=42)
@@ -38,7 +38,7 @@ for name, m in models.items():
 # Choose the best model
 best_name = max(results, key=lambda k: results[k]['test_acc'])
 best_model = models[best_name]
-print(f"✅ Best model: {best_name} with accuracy {results[best_name]['test_acc']:.4f}")
+print(f" Best model: {best_name} with accuracy {results[best_name]['test_acc']:.4f}")
 
 # Save model, feature names, and target names
 joblib.dump({
@@ -47,4 +47,5 @@ joblib.dump({
     'target_names': ['Bad', 'Good']
 }, 'model.pkl')
 
-print("💾 Model saved as model.pkl")
+print("Model saved as model.pkl")
+
